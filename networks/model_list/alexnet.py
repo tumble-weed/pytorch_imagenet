@@ -72,7 +72,7 @@ class AlexNet(nn.Module):
         return x
 
 
-def alexnet(pretrained=False, **kwargs):
+def alexnet(pretrained=False,model_path = 'model_list/alexnet.pth.tar', **kwargs):
     r"""AlexNet model architecture from the
     `"One weird trick..." <https://arxiv.org/abs/1404.5997>`_ paper.
 
@@ -80,8 +80,7 @@ def alexnet(pretrained=False, **kwargs):
         pretrained (bool): If True, returns a model pre-trained on ImageNet
     """
     model = AlexNet(**kwargs)
-    if pretrained:
-        model_path = 'model_list/alexnet.pth.tar'
+    if pretrained:        
         pretrained_model = torch.load(model_path)
         model.load_state_dict(pretrained_model['state_dict'])
     return model
